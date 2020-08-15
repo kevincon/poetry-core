@@ -1,3 +1,4 @@
+from poetry.core.packages.utils.utils import path_to_url
 from poetry.core.utils._compat import Path
 from poetry.core.utils.toml_file import TomlFile
 
@@ -78,7 +79,7 @@ class DirectoryDependency(Dependency):
         if self.extras:
             requirement += "[{}]".format(",".join(self.extras))
 
-        requirement += " @ {}".format(str(self.path))
+        requirement += " @ {}".format(path_to_url(self.path))
 
         return requirement
 
